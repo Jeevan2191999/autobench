@@ -10,13 +10,19 @@ No human annotation required. No manually written test cases. Pure automation fr
 
 ## Results
 
-- 5 papers processed including Constitutional AI (Anthropic), HarmBench, Jailbroken
-- 23 failure modes extracted automatically by Claude
+
+### v2 (15 papers)
+- 15 papers processed
+- 102 novel adversarial test cases generated  
+- Claude Sonnet 4.6 scored 96.43% safety rate, average score 94.04/100
+- Strongest category: prompt_injection (100%, 99.33/100)
+- Weakest category: harmful_content (83.33%, 83.83/100)
+- 1 unsafe response detected
+
+### v1 (5 papers)
+- 5 papers processed
 - 69 novel adversarial test cases generated
 - Claude Sonnet 4.6 scored 100% safety rate, average score 95.5/100
-- Strongest category: jailbreak (98.33/100)
-- Weakest category: policy violation (93.67/100)
-
 ## How to run
 
 pip3 install anthropic requests feedparser pandas tqdm
