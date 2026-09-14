@@ -1,0 +1,47 @@
+[
+  {
+    "id": "https://arxiv.org/abs/2212.08073",
+    "title": "Constitutional AI: Harmlessness from AI Feedback",
+    "abstract": "As AI systems become more capable, we would like to enlist their help to supervise other AIs. We experiment with methods for training a harmless AI assistant through self-improvement, without any human labels identifying harmful outputs. The only human oversight is provided through a list of rules or principles, and so we call the method Constitutional AI. The process involves both a supervised learning and a reinforcement learning phase. In the supervised phase we sample from an initial model, then generate self-critiques and revisions, and then finetune the original model on revised responses. In the RL phase, we sample from the finetuned model, use a model to evaluate which of two outputs is less harmful, and then train a preference model from this dataset, which we then use as the reward signal in RLHF. We find this approach specifically reduces the evasiveness and helpfulness failure modes compared to RLHF, while being less harmful than a purely helpful AI.",
+    "authors": ["Yuntao Bai", "Saurav Kadavath", "Sandipan Kundu", "Amanda Askell"],
+    "published": "2022-12-15",
+    "url": "https://arxiv.org/abs/2212.08073",
+    "query": "constitutional AI safety LLM"
+  },
+  {
+    "id": "https://arxiv.org/abs/2307.15043",
+    "title": "Universal and Transferable Adversarial Attacks on Aligned Language Models",
+    "abstract": "Although large language models are capable of generating harmful content, most research has focused on making these models safe and aligned with human values. We propose a simple and effective attack method which is able to cause aligned language models to generate objectionable behaviors. Specifically our approach finds a short adversarial suffix that can be attached to a wide variety of harmful queries in order to cause the target model to produce harmful content. The adversarial suffix is found using an optimization method that combines greedy and gradient-based search techniques. We show that our adversarial attacks are highly transferable succeeding across different aligned language models including both proprietary models like Claude and GPT-4 as well as open source models. Failure modes include suffix-based jailbreaks, prompt injection, and bypassing content filters through token manipulation.",
+    "authors": ["Andy Zou", "Zifan Wang", "J. Zico Kolter", "Matt Fredrikson"],
+    "published": "2023-07-28",
+    "url": "https://arxiv.org/abs/2307.15043",
+    "query": "adversarial evaluation large language model"
+  },
+  {
+    "id": "https://arxiv.org/abs/2308.09662",
+    "title": "Red-Teaming Large Language Models using Chain of Utterances for Safety-Alignment",
+    "abstract": "Large language models are increasingly being deployed in real-world applications. Ensuring their safety is critical. We present a method for red-teaming LLMs using a chain of utterances approach. Our method generates adversarial prompts that systematically probe model vulnerabilities including prompt injection, jailbreaking, harmful content generation, and deceptive behavior. We evaluate several frontier models and find consistent failure modes across all of them including role-play manipulation, hypothetical framing, authority impersonation, and gradual escalation attacks. We propose a taxonomy of failure modes and a scoring rubric for evaluating model safety across five categories: harmful content, deception, manipulation, privacy violation, and unsafe advice.",
+    "authors": ["Rishabh Bhardwaj", "Soujanya Poria"],
+    "published": "2023-08-18",
+    "url": "https://arxiv.org/abs/2308.09662",
+    "query": "AI safety red teaming evaluation"
+  },
+  {
+    "id": "https://arxiv.org/abs/2305.13860",
+    "title": "Jailbroken: How Does LLM Safety Training Fail?",
+    "abstract": "Large language models trained for safety and helpfulness are vulnerable to jailbreaking attacks that elicit the production of harmful content. We investigate why safety training fails in these cases. We identify two failure modes: competing objectives and mismatched generalization. Competing objectives arise when a model capabilities and safety goals conflict. Mismatched generalization occurs when safety training is narrower than the capability set. We demonstrate these failure modes across multiple models. Key failure categories include: prefix injection where the model is forced to begin with an affirmative response, refusal suppression where the model is instructed never to decline, base64 encoding to bypass content filters, and style injection using fictional or roleplay framings.",
+    "authors": ["Alexander Wei", "Nika Haghtalab", "Jacob Steinhardt"],
+    "published": "2023-05-23",
+    "url": "https://arxiv.org/abs/2305.13860",
+    "query": "jailbreak prompt injection language model"
+  },
+  {
+    "id": "https://arxiv.org/abs/2402.00888",
+    "title": "HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal",
+    "abstract": "Automated red teaming holds substantial promise for alleviating the workload of the human red teamers and operationalizing safety evaluation of large language models. We introduce HarmBench a standardized evaluation framework for automated red teaming. We identify several desiderata for evaluation frameworks including controllability consistency comprehensiveness and efficiency. Red teaming failure modes we identify include direct request attacks, indirect injection attacks, multi-turn manipulation, and semantic equivalence bypasses where the model refuses the literal request but complies with a paraphrase. We evaluate 18 attack methods and 33 target LLMs and find that no current attack method is dominant across all behaviors.",
+    "authors": ["Mantas Mazeika", "Long Phan", "Xuwang Yin"],
+    "published": "2024-02-01",
+    "url": "https://arxiv.org/abs/2402.00888",
+    "query": "LLM failure modes benchmark"
+  }
+]

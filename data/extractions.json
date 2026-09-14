@@ -1,0 +1,233 @@
+[
+  {
+    "failure_modes": [
+      {
+        "name": "Evasiveness",
+        "description": "AI assistants trained with standard RLHF tend to refuse or hedge excessively, failing to provide useful responses even when requests are benign, reducing overall helpfulness",
+        "attack_pattern": "Not an attack pattern but an emergent training artifact where the model over-optimizes for avoiding harm signals by becoming overly cautious or non-responsive",
+        "severity": "medium",
+        "category": "policy_violation"
+      },
+      {
+        "name": "Helpfulness Failure",
+        "description": "Models trained purely for harmlessness sacrifice helpfulness, failing to assist users with legitimate requests as a side effect of harm avoidance training",
+        "attack_pattern": "Not an attack pattern but a training trade-off failure where optimizing for harmlessness degrades the utility of responses",
+        "severity": "medium",
+        "category": "policy_violation"
+      },
+      {
+        "name": "Harmful Output from Purely Helpful AI",
+        "description": "An AI trained solely to be helpful without harmlessness constraints produces harmful content, as helpfulness alone is insufficient to ensure safe behavior",
+        "attack_pattern": "Direct requests for assistance that a helpful-only model would fulfill without applying ethical constraints or refusals",
+        "severity": "high",
+        "category": "harmful_content"
+      }
+    ],
+    "key_vulnerabilities": [
+      "Over-refusal and evasiveness from standard RLHF harmlessness training",
+      "Tension between helpfulness and harmlessness objectives in RLHF",
+      "Reliance on human labels to identify harmful outputs introduces scalability and oversight limitations",
+      "Purely helpful models lacking safety constraints producing harmful outputs"
+    ],
+    "paper_contribution": "This paper introduces Constitutional AI, a method for training harmless AI assistants using self-critique and AI feedback guided by human-specified principles, reducing the need for human-labeled harmful outputs while mitigating evasiveness and helpfulness failures endemic to standard RLHF.",
+    "paper_id": "https://arxiv.org/abs/2212.08073",
+    "paper_title": "Constitutional AI: Harmlessness from AI Feedback",
+    "paper_url": "https://arxiv.org/abs/2212.08073"
+  },
+  {
+    "failure_modes": [
+      {
+        "name": "Adversarial Suffix Jailbreak",
+        "description": "Aligned language models can be caused to generate objectionable and harmful content by appending a short adversarial suffix to harmful queries, bypassing safety alignment",
+        "attack_pattern": "A short adversarial suffix is optimized using greedy and gradient-based search techniques and appended to harmful queries to elicit harmful outputs",
+        "severity": "high",
+        "category": "jailbreak"
+      },
+      {
+        "name": "Prompt Injection via Suffix",
+        "description": "Malicious instructions embedded in adversarial suffixes can override or subvert the model's intended behavior",
+        "attack_pattern": "Adversarial text is injected as a suffix to manipulate model behavior beyond its alignment constraints",
+        "severity": "high",
+        "category": "prompt_injection"
+      },
+      {
+        "name": "Content Filter Bypass via Token Manipulation",
+        "description": "Content filtering mechanisms can be evaded through manipulation at the token level, allowing harmful content to pass through safety checks",
+        "attack_pattern": "Token-level manipulation is used to craft inputs that circumvent content filter detection while still producing harmful outputs",
+        "severity": "high",
+        "category": "policy_violation"
+      }
+    ],
+    "key_vulnerabilities": [
+      "Transferability of adversarial attacks across multiple aligned models including proprietary and open-source systems",
+      "Susceptibility of safety alignment to gradient-based adversarial optimization",
+      "Token-level manipulation enabling content filter evasion",
+      "Universal adversarial suffixes applicable across a wide variety of harmful query types"
+    ],
+    "paper_contribution": "This paper demonstrates that a universally transferable adversarial suffix, found via greedy and gradient-based optimization, can reliably bypass safety alignment across multiple state-of-the-art language models, exposing a fundamental vulnerability in current alignment approaches.",
+    "paper_id": "https://arxiv.org/abs/2307.15043",
+    "paper_title": "Universal and Transferable Adversarial Attacks on Aligned Language Models",
+    "paper_url": "https://arxiv.org/abs/2307.15043"
+  },
+  {
+    "failure_modes": [
+      {
+        "name": "Role-play Manipulation",
+        "description": "Models fail to maintain safety boundaries when interactions are framed as role-playing scenarios",
+        "attack_pattern": "Adversarial prompts use fictional or role-play framing to bypass safety constraints",
+        "severity": "high",
+        "category": "jailbreak"
+      },
+      {
+        "name": "Hypothetical Framing",
+        "description": "Models produce unsafe outputs when harmful requests are presented as hypothetical or theoretical scenarios",
+        "attack_pattern": "Requests are framed as hypothetical situations to circumvent content policies",
+        "severity": "high",
+        "category": "jailbreak"
+      },
+      {
+        "name": "Authority Impersonation",
+        "description": "Models comply with unsafe requests when the prompt implies an authority figure or trusted role is making the request",
+        "attack_pattern": "Attacker impersonates an authority figure or trusted entity within the prompt to gain compliance",
+        "severity": "high",
+        "category": "manipulation"
+      },
+      {
+        "name": "Gradual Escalation",
+        "description": "Models are led to produce harmful content through a sequence of incrementally escalating prompts that individually appear benign",
+        "attack_pattern": "A chain of utterances progressively escalates in harmful intent, exploiting the model's contextual continuity",
+        "severity": "high",
+        "category": "manipulation"
+      },
+      {
+        "name": "Prompt Injection",
+        "description": "Models execute malicious instructions embedded within input data or context",
+        "attack_pattern": "Adversarial instructions are injected into prompts to override or subvert intended model behavior",
+        "severity": "high",
+        "category": "prompt_injection"
+      },
+      {
+        "name": "Harmful Content Generation",
+        "description": "Models produce content that is harmful, dangerous, or violates safety policies",
+        "attack_pattern": "Adversarial prompts systematically probe the model to elicit harmful outputs",
+        "severity": "high",
+        "category": "harmful_content"
+      },
+      {
+        "name": "Deceptive Behavior",
+        "description": "Models engage in or facilitate deceptive outputs when prompted adversarially",
+        "attack_pattern": "Prompts are designed to elicit misleading or deceptive responses from the model",
+        "severity": "medium",
+        "category": "deception"
+      }
+    ],
+    "key_vulnerabilities": [
+      "Context and framing manipulation enabling policy bypass",
+      "Insufficient robustness to multi-turn escalation sequences",
+      "Susceptibility to authority and role-based social engineering",
+      "Failure to maintain safety alignment under prompt injection attacks"
+    ],
+    "paper_contribution": "This paper introduces a chain-of-utterances red-teaming methodology for systematically identifying and taxonomizing LLM safety failure modes, along with a scoring rubric for evaluating model safety across five categories of harmful behavior.",
+    "paper_id": "https://arxiv.org/abs/2308.09662",
+    "paper_title": "Red-Teaming Large Language Models using Chain of Utterances for Safety-Alignment",
+    "paper_url": "https://arxiv.org/abs/2308.09662"
+  },
+  {
+    "failure_modes": [
+      {
+        "name": "Competing Objectives",
+        "description": "A model's capability goals and safety goals come into conflict, causing safety constraints to be overridden by the model's drive to be capable and helpful.",
+        "attack_pattern": "Exploiting the tension between the model's instruction-following capabilities and its safety training, causing capability objectives to win out over refusal behavior.",
+        "severity": "high",
+        "category": "jailbreak"
+      },
+      {
+        "name": "Mismatched Generalization",
+        "description": "Safety training is narrower in scope than the model's full capability set, leaving portions of the capability space unguarded by safety constraints.",
+        "attack_pattern": "Accessing model capabilities through inputs or modalities that safety training did not cover, such as encoded or stylistically transformed prompts.",
+        "severity": "high",
+        "category": "jailbreak"
+      },
+      {
+        "name": "Prefix Injection",
+        "description": "The model is forced to begin its response with an affirmative phrase, bypassing the refusal mechanism by committing the model to a compliant response before safety checks can manifest.",
+        "attack_pattern": "Instructing the model to start its output with an affirmative token or phrase (e.g., 'Sure, here is...'), which primes the model to continue with harmful content.",
+        "severity": "high",
+        "category": "prompt_injection"
+      },
+      {
+        "name": "Refusal Suppression",
+        "description": "The model is explicitly instructed to never decline a request, directly undermining the behavioral output of safety training.",
+        "attack_pattern": "Including explicit meta-instructions in the prompt that forbid the model from refusing, hedging, or expressing ethical concerns.",
+        "severity": "high",
+        "category": "jailbreak"
+      },
+      {
+        "name": "Base64 Encoding Bypass",
+        "description": "Harmful requests are encoded in Base64 or similar encodings to evade content filters that operate on surface-level text patterns.",
+        "attack_pattern": "Encoding the harmful portion of a prompt in Base64 and instructing the model to decode and respond, exploiting mismatched generalization where safety training did not cover encoded inputs.",
+        "severity": "high",
+        "category": "jailbreak"
+      },
+      {
+        "name": "Style Injection via Fictional or Roleplay Framing",
+        "description": "Harmful requests are embedded within fictional narratives or roleplay scenarios, causing the model to treat safety constraints as inapplicable to the fictional context.",
+        "attack_pattern": "Wrapping harmful content requests in roleplay, storytelling, or fictional framings (e.g., 'write a story where a character explains how to...') to exploit the gap between safety training and stylistic generalization.",
+        "severity": "high",
+        "category": "manipulation"
+      }
+    ],
+    "key_vulnerabilities": [
+      "Safety training scope is narrower than the model's full capability space, leaving unguarded attack surfaces",
+      "Conflict between instruction-following capability objectives and safety refusal objectives",
+      "Content filters that operate on surface-level text are bypassable via encoding transformations",
+      "Safety constraints fail to generalize robustly across stylistic and contextual variations such as roleplay or fictional framing"
+    ],
+    "paper_contribution": "This paper identifies and formalizes two root causes of LLM safety training failure\u2014competing objectives and mismatched generalization\u2014and demonstrates how specific attack techniques exploit these failure modes to elicit harmful content from safety-trained models.",
+    "paper_id": "https://arxiv.org/abs/2305.13860",
+    "paper_title": "Jailbroken: How Does LLM Safety Training Fail?",
+    "paper_url": "https://arxiv.org/abs/2305.13860"
+  },
+  {
+    "failure_modes": [
+      {
+        "name": "Direct Request Attacks",
+        "description": "A failure mode where the model complies with harmful requests made directly and explicitly without obfuscation.",
+        "attack_pattern": "Submitting harmful requests to the model in a straightforward, unobfuscated manner.",
+        "severity": "high",
+        "category": "jailbreak"
+      },
+      {
+        "name": "Indirect Injection Attacks",
+        "description": "A failure mode where harmful instructions are delivered indirectly rather than as a primary user request, bypassing safety mechanisms.",
+        "attack_pattern": "Embedding harmful instructions within indirect content or context rather than issuing them as explicit direct commands.",
+        "severity": "high",
+        "category": "prompt_injection"
+      },
+      {
+        "name": "Multi-Turn Manipulation",
+        "description": "A failure mode where safety guardrails are eroded or bypassed through a sequence of conversational turns rather than a single prompt.",
+        "attack_pattern": "Progressively steering the model toward harmful outputs across multiple conversation turns, exploiting context accumulation.",
+        "severity": "high",
+        "category": "manipulation"
+      },
+      {
+        "name": "Semantic Equivalence Bypasses",
+        "description": "A failure mode where the model correctly refuses a literal harmful request but complies when the same request is rephrased or paraphrased, revealing inconsistent safety enforcement.",
+        "attack_pattern": "Paraphrasing or semantically rephrasing a refused harmful request so that the model no longer recognizes it as policy-violating.",
+        "severity": "medium",
+        "category": "jailbreak"
+      }
+    ],
+    "key_vulnerabilities": [
+      "Inconsistent refusal behavior across semantically equivalent phrasings",
+      "Susceptibility to indirect and injected instruction delivery",
+      "Erosion of safety guardrails across multi-turn conversations",
+      "Lack of dominant robust defenses across diverse attack methods and model targets"
+    ],
+    "paper_contribution": "HarmBench introduces a standardized, comprehensive evaluation framework for automated red teaming that benchmarks 18 attack methods against 33 LLMs, providing consistent and reproducible safety assessments to advance the operationalization of LLM safety evaluation.",
+    "paper_id": "https://arxiv.org/abs/2402.00888",
+    "paper_title": "HarmBench: A Standardized Evaluation Framework for Automated Red Teaming and Robust Refusal",
+    "paper_url": "https://arxiv.org/abs/2402.00888"
+  }
+]
