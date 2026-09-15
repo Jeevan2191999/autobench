@@ -1,3 +1,7 @@
+## Paper
+
+Jeevan Nagaraj. AutoBench: Automated Adversarial Benchmark Generation for LLM Safety Evaluation from Research Literature. Zenodo, 2026. https://zenodo.org/records/22770661
+
 # AutoBench
 
 Automated adversarial benchmark generation for Constitutional AI properties from research literature.
